@@ -1,5 +1,15 @@
 {{ partial "header.html" . }}
-
+    {{ with .Params.image }}
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <div class="row center">
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="{{ . | absURL }}" alt=""></div>
+    </div>
+    {{ end }}
     <section class="container">
         <section class="content">
             <h1>{{ if .Params.heading }} {{ .Params.heading }} {{ else }} {{ .Title }} {{ end }}</h1>
@@ -19,6 +29,16 @@
                 {{ if .NextInSection }}
                     <a href="{{ .NextInSection.Permalink }}">{{ .NextInSection.Title }} &raquo;</a>
                 {{ end }}
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-xs-5 col-sm-2">
+                    <img src="{{ .Site.Params.gravatar }}?s=90" alt="{{ .Site.Params.author }}" class="responsive-img circle">
+                </div>
+                <div class="col-xs-7 col-sm-9 author-description">
+                    <b>{{ .Site.Params.author }}</b>
+                    <p>{{ .Site.Params.description }}</p>
+                </div>
             </div>
         </section>
         <br>
